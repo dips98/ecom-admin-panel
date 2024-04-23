@@ -11,7 +11,12 @@ export const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         children: [
-            { path: '', component: HomeComponent }
+            { path: '', component: HomeComponent },
+            { path: 'products', component: HomeComponent },
+            { path: 'orders', component: HomeComponent },
+            { path: 'customers', component: HomeComponent },
+            { path: 'inventry', component: HomeComponent },
+            { path: 'sales', component: HomeComponent }
         ]
 
     }
