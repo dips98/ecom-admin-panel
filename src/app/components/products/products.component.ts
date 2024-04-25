@@ -43,7 +43,17 @@ export class ProductsComponent {
   // modal open method
 
   openModel(){
-    
+    const modalElement:any = document.getElementById('addProduct')
+    const modal = new bootstrap.Modal(modalElement);
+
+    modal.show();
+  }
+
+  closeModel(){
+    const modalElement:any = document.getElementById('addProduct')
+    const modal = new bootstrap.Modal(modalElement);
+
+    modal.show();
   }
 
 }
