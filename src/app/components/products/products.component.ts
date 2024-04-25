@@ -40,4 +40,10 @@ export class ProductsComponent {
     this.productForm.reset();
   }
 
+  // modal open method
+
+  openModel(){
+    
+  }
+
 }
