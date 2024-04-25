@@ -38,6 +38,7 @@ export class ProductsComponent {
     this.productList.push(this.productForm.value);
     console.log(this.productList);
     this.productForm.reset();
+    this.closeModel()
   }
 
   // modal open method
@@ -58,7 +59,8 @@ export class ProductsComponent {
         if (modal) {
             modal.hide();
             // Remove the modal backdrop
-            modalBackdrop.parentNode && modalBackdrop.parentNode.removeChild(modalBackdrop);
+            if(modalBackdrop)
+              modalBackdrop.parentNode && modalBackdrop.parentNode.removeChild(modalBackdrop);
         }
     }
   }
