@@ -50,10 +50,17 @@ export class ProductsComponent {
   }
 
   closeModel(){
-    const modalElement:any = document.getElementById('addProduct')
-    const modal = new bootstrap.Modal(modalElement);
+    const modalElement = document.getElementById('addProduct');
+    const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
 
-    modal.show();
+    if (modalElement) {
+        const modal = bootstrap.Modal.getInstance(modalElement);
+        if (modal) {
+            modal.hide();
+            // Remove the modal backdrop
+            modalBackdrop.parentNode && modalBackdrop.parentNode.removeChild(modalBackdrop);
+        }
+    }
   }
 
 }
