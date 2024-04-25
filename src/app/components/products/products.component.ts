@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as bootstrap from 'bootstrap';
+
 @Component({
   selector: 'app-products',
   standalone: true,
