@@ -23,7 +23,7 @@
                         <td>{{item.productQuantity}}</td>
                         <td style="text-align: center;">
                             <button type="button" (click)="openModel()" class="btn btn-success"><i class="bi bi-pencil"></i></button>
-                            <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            <button type="button" (click)="closeModel()" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                 }
@@ -70,6 +70,7 @@
           </form>
         </div>
         <div class="modal-footer">
+          <button type="button" (click)="closeModel()" class="btn btn-danger"><i class="bi bi-trash"></i></button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" (click)="submit()">Submit</button>
         </div>
