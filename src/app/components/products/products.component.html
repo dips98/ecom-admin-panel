@@ -22,8 +22,8 @@
                         <td>{{item.productRate}}</td>
                         <td>{{item.productQuantity}}</td>
                         <td style="text-align: center;">
-                            <button type="button" (click)="openModel('editProduct')" class="btn btn-success"><i class="bi bi-pencil"></i></button>
-                            <button type="button" (click)="openModel('deleteProduct')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            <button type="button" (click)="openModel('editProduct', $index)" class="btn btn-success"><i class="bi bi-pencil"></i></button>
+                            <button type="button" (click)="openModel('deleteProduct', $index)" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                 }
@@ -82,7 +82,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Add new product</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Update product</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -121,7 +121,9 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5 text-danger" id="exampleModalLabel"><i class="bi bi-trash"></i> 
+            Delete the product
+          </h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">

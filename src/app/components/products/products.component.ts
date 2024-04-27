@@ -48,11 +48,31 @@ export class ProductsComponent {
 
   // modal open method
 
-  openModel(modalId:string){
+  openModel(modalId:string, index:any = ''){
+    // if(modalId=='deleteProduct'){
+    //   this.deleteProduct(index);
+    // }
+    if(modalId=='editProduct'){
+      this.productForm = new FormGroup({
+        productId: new FormControl(this.productList[index].productId),
+        productName: new FormControl(this.productList[index].productName),
+        productRate: new FormControl(this.productList[index].productRate),
+        productQuantity: new FormControl(this.productList[index].productQuantity)
+      })
+    }
+    
     const modalElement:any = document.getElementById(modalId)
     const modal = new bootstrap.Modal(modalElement);
-
     modal.show();
+  }
+
+
+  updateProduct(){
+
+  }
+
+  deleteProduct(index: any) {
+    this.productList = this.productList.splice(0,index);
   }
 
   closeModel(modalId:string){
