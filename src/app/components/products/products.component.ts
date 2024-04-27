@@ -38,20 +38,20 @@ export class ProductsComponent {
     this.productList.push(this.productForm.value);
     console.log(this.productList);
     this.productForm.reset();
-    this.closeModel()
+    this.closeModel('addProduct');
   }
 
   // modal open method
 
-  openModel(){
-    const modalElement:any = document.getElementById('addProduct')
+  openModel(modalId:string){
+    const modalElement:any = document.getElementById(modalId)
     const modal = new bootstrap.Modal(modalElement);
 
     modal.show();
   }
 
-  closeModel(){
-    const modalElement = document.getElementById('addProduct');
+  closeModel(modalId:string){
+    const modalElement = document.getElementById(modalId);
     const modalBackdrop = document.getElementsByClassName('modal-backdrop')[0];
 
     if (modalElement) {

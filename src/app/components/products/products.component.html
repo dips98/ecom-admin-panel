@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="product-section">
-        <button class="btn btn-primary float-end m-3" (click)="openModel()" >Add+</button>
+        <button class="btn btn-primary float-end m-3" (click)="openModel('addProduct')" >Add+</button>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -22,8 +22,8 @@
                         <td>{{item.productRate}}</td>
                         <td>{{item.productQuantity}}</td>
                         <td style="text-align: center;">
-                            <button type="button" (click)="openModel()" class="btn btn-success"><i class="bi bi-pencil"></i></button>
-                            <button type="button" (click)="closeModel()" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            <button type="button" (click)="openModel('addProduct')" class="btn btn-success"><i class="bi bi-pencil"></i></button>
+                            <button type="button" (click)="closeModel('addProduct')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                 }
