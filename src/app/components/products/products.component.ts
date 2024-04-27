@@ -41,6 +41,11 @@ export class ProductsComponent {
     this.closeModel('addProduct');
   }
 
+  editSaveData(){
+    console.log(this.productList);
+    this.closeModel('editProduct');
+  }
+
   // modal open method
 
   openModel(modalId:string){

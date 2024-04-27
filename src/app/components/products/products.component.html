@@ -22,7 +22,7 @@
                         <td>{{item.productRate}}</td>
                         <td>{{item.productQuantity}}</td>
                         <td style="text-align: center;">
-                            <button type="button" (click)="openModel('addProduct')" class="btn btn-success"><i class="bi bi-pencil"></i></button>
+                            <button type="button" (click)="openModel('editProduct')" class="btn btn-success"><i class="bi bi-pencil"></i></button>
                             <button type="button" (click)="closeModel('addProduct')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
@@ -40,6 +40,8 @@
 
 <!-- Button trigger modal -->  
   <!-- Modal -->
+
+  <!-- Add product modal -->
   <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
@@ -76,3 +78,48 @@
       </div>
     </div>
   </div>
+  <!-- Add product modal -->
+
+  <!-- Edit product modal -->
+
+  <div class="modal fade" id="editProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add new product</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="productForm">
+            <div class="row">
+                <div class="col-xl-6">
+                    <label for="product-id" class="form-label">Product ID <sup>*</sup></label>
+                    <input type="text" class="form-control form-control-lg w-100 mb-3" id="product-id" placeholder="Write product id" formControlName="productId">
+                </div>
+                <div class="col-xl-6">
+                    <label for="product-name" class="form-label">Product Name <sup>*</sup></label>
+                    <input type="text" class="form-control form-control-lg w-100 mb-3" id="product-name" placeholder="Write product name" formControlName="productName">
+                </div>
+                <div class="col-xl-6">
+                    <label for="rate" class="form-label">Product price <sup>*</sup></label>
+                    <input type="text" class="form-control form-control-lg w-100 mb-3" id="rate" placeholder="Write a rate" formControlName="productRate">
+                </div>
+                <div class="col-xl-6">
+                    <label for="Quantity" class="form-label">Quantity <sup>*</sup></label>
+                    <input type="number" class="form-control form-control-lg w-100 mb-3" id="Quantity" placeholder="How much quantity" formControlName="productQuantity">
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModel('editProduct')" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="editSaveData()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit product modal -->
+
+  <!-- Delete modal -->
+  
