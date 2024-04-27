@@ -23,7 +23,7 @@
                         <td>{{item.productQuantity}}</td>
                         <td style="text-align: center;">
                             <button type="button" (click)="openModel('editProduct')" class="btn btn-success"><i class="bi bi-pencil"></i></button>
-                            <button type="button" (click)="closeModel('addProduct')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            <button type="button" (click)="openModel('deleteProduct')" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
                 }
@@ -120,4 +120,22 @@
   <!-- Edit product modal -->
 
   <!-- Delete modal -->
-  
+  <div class="modal fade" id="deleteProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure want to delete
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete modal -->
+  <!-- Button trigger modal -->
