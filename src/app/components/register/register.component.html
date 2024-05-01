@@ -5,31 +5,31 @@
             <h1>Registration Form</h1>
         </div>
         <div class="card-body p-5">
-            <form action="">
+            <form [formGroup]="userRegForm">
                 <div class="row">
                     <div class="col-xl-6 mb-3">
                         <label for="firstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstName" >
+                        <input type="text" class="form-control" id="firstName" formControlName="firstName">
                     </div>
                     <div class="col-xl-6 mb-3">
                         <label for="lastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" >
+                        <input type="text" class="form-control" id="lastName" formControlName="lastName" >
                     </div>
                     <div class="col-xl-6 mb-3">
                         <label for="contact" class="form-label">Contact</label>
-                        <input type="tel" maxlength="10" class="form-control" id="contact" >
+                        <input type="tel" maxlength="10" class="form-control" id="contact" formControlName="contact">
                     </div>
                     <div class="col-xl-6 mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="email" >
+                        <input type="email" class="form-control" id="email" formControlName="email">
                     </div>
                     <div class="col-xl-6 mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" >
+                        <input type="password" class="form-control" id="password" formControlName="password">
                     </div>
                     <div class="col-xl-6 mb-3">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" >
+                        <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
                     </div>
                 </div>
             </form>
