@@ -14,4 +14,11 @@ export class RequestService {
     const Res = this.http.post(url,body);
     return Res;
   }
+
+  loginUser(body: any) {
+    var url = 'http://localhost:3000/login'
+    const Res = this.http.post(url,body);
+    return Res;
+  }
+
 }
