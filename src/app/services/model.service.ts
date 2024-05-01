@@ -14,4 +14,8 @@ export class ModelService {
     return this.request.registerUser(body);
   }
 
+  loginUser(body:any) {
+    return this.request.loginUser(body);
+  }
+
 }
