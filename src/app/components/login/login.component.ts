@@ -12,7 +12,8 @@ import { ModelService } from '../../services/model.service';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  loginForm!:FormGroup 
+  loginForm!:FormGroup;
+  errorMsg!:string;
 
   constructor(
   private router:Router,
@@ -32,17 +33,20 @@ export class LoginComponent {
   }
 
   login(){
+    this.errorMsg = '';
     if(this.loginForm.valid){
-      alert('Login Successfull!');
       const body = this.loginForm.value;
       this.modelService.loginUser(body).subscribe({next:(resp:any)=>{
         if(resp && resp.msg=='loginSuccess'){
           this.router.navigate(['dashboard']).then(()=>{
             alert("Login Successfull");
           })
+        }else{
+          this.errorMsg = resp.msg;
         }
       },error:(err)=>{
         console.log(err);
+        this.errorMsg = err?.error?.msg || 'Login failed!';
       }})
     }
   }

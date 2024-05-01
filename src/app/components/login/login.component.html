@@ -35,6 +35,9 @@
             <button class="btn btn-primary float-end" (click)="login()" [disabled]="!this.loginForm.valid">
                 Login
             </button>
+            <div *ngIf="errorMsg" class="text-danger">
+                <p>{{errorMsg}}</p>
+            </div>
         </div>
 
     </div>
