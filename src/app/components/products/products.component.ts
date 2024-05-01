@@ -14,6 +14,7 @@ export class ProductsComponent {
 
   productForm! :FormGroup;
   productList:any = [];
+  index:number = 0 ;
 
   constructor(
      
@@ -41,17 +42,11 @@ export class ProductsComponent {
     this.closeModel('addProduct');
   }
 
-  editSaveData(){
-    console.log(this.productList);
-    this.closeModel('editProduct');
-  }
 
   // modal open method
 
-  openModel(modalId:string, index:any = ''){
-    // if(modalId=='deleteProduct'){
-    //   this.deleteProduct(index);
-    // }
+  openModel(modalId:string, index:number = -1){
+    this.index = index;
     if(modalId=='editProduct'){
       this.productForm = new FormGroup({
         productId: new FormControl(this.productList[index].productId),
@@ -60,7 +55,7 @@ export class ProductsComponent {
         productQuantity: new FormControl(this.productList[index].productQuantity)
       })
     }
-    
+
     const modalElement:any = document.getElementById(modalId)
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
@@ -71,8 +66,19 @@ export class ProductsComponent {
 
   }
 
-  deleteProduct(index: any) {
-    this.productList = this.productList.splice(0,index);
+  editSaveData(){
+    console.log(this.productForm.value);
+    this.productList[this.index].productId = this.productForm.value.productId;
+    this.productList[this.index].productName = this.productForm.value.productName;
+    this.productList[this.index].productRate = this.productForm.value.productRate;
+    this.productList[this.index].productQuantity = this.productForm.value.productQuantity;
+
+    this.closeModel('editProduct');
+  }
+
+  deleteProduct() {
+    console.log('This product is deleted !', this.productList.splice(this.index,1));
+    this.closeModel('deleteProduct');
   }
 
   closeModel(modalId:string){
