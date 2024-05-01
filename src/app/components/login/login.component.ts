@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { ModelService } from '../../services/model.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent {
   loginForm!:FormGroup 
 
   constructor(
-  private router:Router
+  private router:Router,
+  private modelService:ModelService,
   ){  
   }
 
@@ -32,7 +34,16 @@ export class LoginComponent {
   login(){
     if(this.loginForm.valid){
       alert('Login Successfull!');
-      this.router.navigate(['dashboard']);
+      const body = this.loginForm.value;
+      this.modelService.loginUser(body).subscribe({next:(resp:any)=>{
+        if(resp && resp.msg=='loginSuccess'){
+          this.router.navigate(['dashboard']).then(()=>{
+            alert("Login Successfull");
+          })
+        }
+      },error:(err)=>{
+        console.log(err);
+      }})
     }
   }
 
