@@ -26,4 +26,7 @@ export class RegisterComponent {
       confirmPassword: new FormControl(''),
     });
   }
+  doRegister(){
+    console.log(this.userRegForm.value);
+  }
 }
