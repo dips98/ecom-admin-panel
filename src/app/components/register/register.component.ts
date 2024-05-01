@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -15,8 +15,15 @@ export class RegisterComponent {
   ngOnInit():void{
     this.setForm();
   }
-  
-  setForm(){
 
+  setForm(){
+    this.userRegForm = new FormGroup({
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
+      contact: new FormControl(''),
+      email: new FormControl(''),
+      password: new FormControl(''),
+      confirmPassword: new FormControl(''),
+    });
   }
 }
