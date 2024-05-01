@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ModelService } from '../../services/model.service';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
+
+  constructor(
+    private modelService:ModelService
+  ){}
 
   userRegForm!: FormGroup;
 
@@ -27,7 +32,13 @@ export class RegisterComponent {
       confirmPassword: new FormControl(''),
     });
   }
-  doRegister(){
-    console.log(this.userRegForm.value);
+
+  async doRegister(){
+    const body = this.userRegForm.value;
+    (await this.modelService.resgisterUser(body)).subscribe((data:any)=>{
+      console.log(data);
+      this.userRegForm.reset();
+      alert(data.msg);
+    })
   }
 }
