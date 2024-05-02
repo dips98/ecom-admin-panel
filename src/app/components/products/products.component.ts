@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as bootstrap from 'bootstrap';
+import { ModelService } from '../../services/model.service';
 
 @Component({
   selector: 'app-products',
@@ -17,10 +18,8 @@ export class ProductsComponent {
   index:number = 0 ;
 
   constructor(
-     
-  ){
-
-  }
+    private modelService:ModelService,
+  ){}
 
   ngOnInit():void{
     this.setForm();
