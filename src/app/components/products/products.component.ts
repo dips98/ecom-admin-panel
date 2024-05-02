@@ -36,6 +36,9 @@ export class ProductsComponent {
 
   submit(){
     this.productList.push(this.productForm.value);
+    this.modelService.addProduct(this.productForm.value).subscribe((result:any)=>{
+      console.log(result);
+    })
     console.log(this.productList);
     this.productForm.reset();
     this.closeModel('addProduct');
