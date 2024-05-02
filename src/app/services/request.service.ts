@@ -9,15 +9,15 @@ export class RequestService {
     private http: HttpClient
   ) { }
 
-  registerUser(body:any){
+  registerUser(body: any) {
     var url = 'http://localhost:3000/register'
-    const Res = this.http.post(url,body);
+    const Res = this.http.post(url, body);
     return Res;
   }
 
   loginUser(body: any) {
     var url = 'http://localhost:3000/login'
-    const Res = this.http.post(url,body);
+    const Res = this.http.post(url, body);
     return Res;
   }
 
