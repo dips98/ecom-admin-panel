@@ -10,11 +10,11 @@ export class ModelService {
     private request: RequestService
   ) { }
 
-  async resgisterUser(body:any){
+  async resgisterUser(body: any) {
     return this.request.registerUser(body);
   }
 
-  loginUser(body:any) {
+  loginUser(body: any) {
     return this.request.loginUser(body);
   }
 
