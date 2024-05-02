@@ -8,51 +8,53 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule,ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  loginForm!:FormGroup;
-  errorMsg!:string;
+  loginForm!: FormGroup;
+  errorMsg!: string;
 
   constructor(
-  private router:Router,
-  private modelService:ModelService,
-  ){  
+    private router: Router,
+    private modelService: ModelService,
+  ) {
   }
 
-  ngOnInit():void{
+  ngOnInit(): void {
     this.setForm();
   }
 
-  setForm(){
+  setForm() {
     this.loginForm = new FormGroup({
-      email: new FormControl('',[Validators.required,Validators.email]),
-      password: new FormControl('',[Validators.required,Validators.maxLength(5)])
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.maxLength(5)])
     })
   }
 
-  login(){
+  login() {
     this.errorMsg = '';
-    if(this.loginForm.valid){
+    if (this.loginForm.valid) {
       const body = this.loginForm.value;
-      this.modelService.loginUser(body).subscribe({next:(resp:any)=>{
-        if(resp && resp.msg=='loginSuccess'){
-          this.loginSuccessPopupNavigate();
-        }else{
-          this.errorMsg = resp.msg;
+      this.modelService.loginUser(body).subscribe({
+        next: (resp: any) => {
+          if (resp && resp.msg == 'loginSuccess') {
+            this.loginSuccessPopupNavigate();
+          } else {
+            this.errorMsg = resp.msg;
+            this.errorPopup(this.errorMsg);
+          }
+        }, error: (err) => {
+          console.log(err);
+          this.errorMsg = err?.error?.msg || 'Login failed!';
           this.errorPopup(this.errorMsg);
         }
-      },error:(err)=>{
-        console.log(err);
-        this.errorMsg = err?.error?.msg || 'Login failed!';
-        this.errorPopup(this.errorMsg);
-      }})
+      })
     }
   }
 
-  errorPopup(Msg:string){
+  errorPopup(Msg: string) {
     Swal.fire({
       title: "Login Failed!",
       text: Msg,
@@ -61,16 +63,16 @@ export class LoginComponent {
   }
 
   loginSuccessPopupNavigate() {
-    let timerInterval:any;
+    let timerInterval: any;
     Swal.fire({
-      position:'top-end',
+      position: 'top-end',
       title: "Login Successful!",
       html: "I will close in <b></b> milliseconds.",
       timer: 2000,
       timerProgressBar: true,
       didOpen: () => {
         Swal.showLoading();
-        const timer:any = Swal.getPopup()?.querySelector("b");
+        const timer: any = Swal.getPopup()?.querySelector("b");
         timerInterval = setInterval(() => {
           timer.textContent = `${Swal.getTimerLeft()}`;
         }, 100);
@@ -82,7 +84,7 @@ export class LoginComponent {
       /* Read more about handling dismissals below */
       if (result.dismiss === Swal.DismissReason.timer) {
         console.log("I was closed by the timer");
-        this.router.navigate(['dashboard']).then(()=>{});
+        this.router.navigate(['dashboard']).then(() => { });
       }
     });
   }
