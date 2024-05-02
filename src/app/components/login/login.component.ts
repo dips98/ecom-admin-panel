@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ModelService } from '../../services/model.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -38,17 +39,52 @@ export class LoginComponent {
       const body = this.loginForm.value;
       this.modelService.loginUser(body).subscribe({next:(resp:any)=>{
         if(resp && resp.msg=='loginSuccess'){
-          this.router.navigate(['dashboard']).then(()=>{
-            alert("Login Successfull");
-          })
+          this.loginSuccessPopupNavigate();
         }else{
           this.errorMsg = resp.msg;
+          this.errorPopup(this.errorMsg);
         }
       },error:(err)=>{
         console.log(err);
         this.errorMsg = err?.error?.msg || 'Login failed!';
+        this.errorPopup(this.errorMsg);
       }})
     }
+  }
+
+  errorPopup(Msg:string){
+    Swal.fire({
+      title: "Login Failed!",
+      text: Msg,
+      icon: "error"
+    });
+  }
+
+  loginSuccessPopupNavigate() {
+    let timerInterval:any;
+    Swal.fire({
+      position:'top-end',
+      title: "Login Successful!",
+      html: "I will close in <b></b> milliseconds.",
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+        const timer:any = Swal.getPopup()?.querySelector("b");
+        timerInterval = setInterval(() => {
+          timer.textContent = `${Swal.getTimerLeft()}`;
+        }, 100);
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log("I was closed by the timer");
+        this.router.navigate(['dashboard']).then(()=>{});
+      }
+    });
   }
 
 }
