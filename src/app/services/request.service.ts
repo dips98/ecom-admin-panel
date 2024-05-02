@@ -22,4 +22,10 @@ export class RequestService {
     return Res;
   }
 
+  addProduct(body: any) {
+    var url = 'http://localhost:3000/addProduct'
+    const Res = this.http.post(url, body);
+    return Res;
+  }
+
 }
