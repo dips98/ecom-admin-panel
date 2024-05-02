@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
+
 export class LoginComponent {
   loginForm!: FormGroup;
   errorMsg!: string;
