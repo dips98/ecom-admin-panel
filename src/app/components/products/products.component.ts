@@ -90,7 +90,7 @@ export class ProductsComponent {
         const modal = bootstrap.Modal.getInstance(modalElement);
         if (modal) {
             modal.hide();
-            // Remove the modal backdrop
+            
             if(modalBackdrop)
               modalBackdrop.parentNode && modalBackdrop.parentNode.removeChild(modalBackdrop);
         }
