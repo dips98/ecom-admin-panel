@@ -9,7 +9,7 @@ import { UrlConfigService } from './url-config.service';
 export class RequestService {
   constructor(
     private http: HttpClient,
-    private configUrl: UrlConfigService
+    private configUrl: UrlConfigService,
   ) { }
 
   registerUser(body: any) {
