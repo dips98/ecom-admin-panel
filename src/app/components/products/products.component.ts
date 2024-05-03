@@ -44,9 +44,6 @@ export class ProductsComponent {
     this.closeModel('addProduct');
   }
 
-
-  // modal open method
-
   openModel(modalId:string, index:number = -1){
     this.index = index;
     if(modalId=='editProduct'){
