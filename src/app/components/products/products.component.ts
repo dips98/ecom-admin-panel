@@ -64,7 +64,7 @@ export class ProductsComponent {
   }
 
   updateProduct(){
-    console.log('D');
+    console.log('D'); 
   }
 
   editSaveData(){
