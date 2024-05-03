@@ -66,7 +66,6 @@ export class ProductsComponent {
   updateProduct(){
     console.log('D'); 
   }
-  
 
   editSaveData(){
     console.log(this.productForm.value);
