@@ -63,7 +63,6 @@ export class ProductsComponent {
     modal.show();
   }
 
-
   updateProduct(){
 
   }
