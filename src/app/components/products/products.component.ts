@@ -64,7 +64,7 @@ export class ProductsComponent {
   }
 
   updateProduct(){
-
+    
   }
 
   editSaveData(){
