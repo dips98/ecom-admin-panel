@@ -10,5 +10,4 @@ import { NavigationComponent } from '../components/navigation/navigation.compone
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-s
 }
