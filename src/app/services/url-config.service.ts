@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class UrlConfigService {
 
-  urlhost:string = 'http://localhost:3000';
+  urlhost:string = 'https://admin-g3xt.onrender.com' || 'http://localhost:3000';
   constructor() { }
 }
